@@ -6,7 +6,7 @@ class BooksController < ApplicationController
   def index
     @book = Book.new
     @books = Book.all
-   
+
 
   end
 
@@ -23,7 +23,7 @@ class BooksController < ApplicationController
     @books = Book.all
     @book = Book.new(book_params)
     if @book.save
-      flash[:notice] = "successfully"
+      flash[:notice] = "Book was successfully created."
       redirect_to book_path(@book.id)
     else
       # flash.nowでフラッシュメッセージを定義する
@@ -49,7 +49,7 @@ class BooksController < ApplicationController
   def destroy
     book = Book.find(params[:id])  # データ（レコード）を1件取得
     book.destroy  # データ（レコード）を削除
-    flash[:notice] = "successfully"
+    flash[:notice] = "Book was successfully destroyed."
     redirect_to '/books'  # 投稿一覧画面へリダイレクト
   end
 
